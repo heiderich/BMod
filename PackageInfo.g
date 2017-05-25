@@ -90,6 +90,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
+                   [ "MatricesForHomalg", ">= 2017.05.24" ],
                    [ "RingsForHomalg", ">= 2017.05.10" ],
                    [ "CAP", ">= 2017.05.03" ],
                    [ "AttributeCategoryForCAP", ">= 2016.09.14" ],

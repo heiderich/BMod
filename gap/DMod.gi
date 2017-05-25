@@ -172,8 +172,7 @@ InstallMethod( CategoryWithBialgebraAction,
         
   function( abelian_category, bialgebra )
     local category_with_bialgebra_action, number_of_generators_of_bialgebra,
-          preconditions, category_weight_list, i,
-          structure_record, object_constructor, morphism_constructor;
+          preconditions, category_weight_list, structure_record;
     
     if not IsFinalized( abelian_category ) then
         
@@ -197,13 +196,14 @@ InstallMethod( CategoryWithBialgebraAction,
     );
     
     ## Constructors
-    object_constructor := CreateObjectConstructorForCategoryWithAttributes(
+    structure_record.ObjectPreConstructor :=
+      CreateObjectConstructorForCategoryWithAttributes(
               abelian_category, category_with_bialgebra_action, TheTypeObjectWithBialgebraAction );
     
     structure_record.ObjectConstructor := function( object, attributes )
         local return_object;
         
-        return_object := object_constructor( object, attributes );
+        return_object := structure_record.ObjectPreConstructor( object, attributes );
         
         SetActionEndomorphisms( return_object, attributes );
         

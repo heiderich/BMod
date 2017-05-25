@@ -334,6 +334,18 @@ InstallMethod( CategoryWithBialgebraAction,
                    
       structure_record.MorphismConstructor );
     
+    ##
+    InstallMethod( DMod,
+                   [ IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ),
+                     IsHomalgMatrix,
+                     IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ) ],
+                   
+      function( S, m, T )
+        
+        return VectorSpaceMorphism( UnderlyingCell( S ), m, UnderlyingCell( T ) );
+        
+    end );
+    
     ## TODO: Set properties of category_with_bialgebra_action
     
     if HasIsAbelianCategory( abelian_category ) then

@@ -103,9 +103,16 @@ DeclareOperation( "DMod",
 #!  given by the $k$-linear map <A>phi</A> between the underlying
 #!  finite dimensional $k$-vector spaces.
 #! @Arguments S, phi, T
+#! @Group DMod_morphism
 #! @Returns a &CAP; morphism
 DeclareOperation( "DMod",
         [ IsCapCategoryObjectWithBialgebraAction, IsCapCategoryMorphism, IsCapCategoryObjectWithBialgebraAction ] );
+
+#! @Arguments S, mat, T
+#! @Group DMod_morphism
+#! @Returns a &CAP; morphism
+DeclareOperation( "DMod",
+        [ IsCapCategoryObjectWithBialgebraAction, IsHomalgMatrix, IsCapCategoryObjectWithBialgebraAction ] );
 
 #! @Description
 #!  Wrap the &CAP; functor <A>F</A>:<C>UnderlyingCategory</C>(<A>A</A>)<M>\to</M><C>UnderlyingCategory</C>(<A>B</A>),

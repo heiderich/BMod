@@ -248,7 +248,7 @@ InstallMethod( CategoryWithBialgebraAction,
           end;
     fi;
     
-    ## Left action for DirectSum
+    ## DirectSum with bialgebra action
     preconditions := [ "DirectSum" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
@@ -270,7 +270,7 @@ InstallMethod( CategoryWithBialgebraAction,
         
     fi;
     
-    ## Lift embeddings "with bialgebra action" along monomorphism
+    ## Lift along monomorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
                        "LiftAlongMonomorphism" ];
@@ -286,7 +286,7 @@ InstallMethod( CategoryWithBialgebraAction,
         
     fi;
     
-    ## Colift left action along epimorphism
+    ## Colift along epimorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
                        "ColiftAlongEpimorphism" ];

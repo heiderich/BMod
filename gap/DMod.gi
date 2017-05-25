@@ -280,7 +280,8 @@ InstallMethod( CategoryWithBialgebraAction,
         structure_record.Lift :=
           function( mono, range )
             
-            
+            return List( ActionEndomorphisms( range ),
+                         d -> LiftAlongMonomorphism( mono, PreCompose( mono, d ) ) );
             
           end;
         
@@ -296,7 +297,8 @@ InstallMethod( CategoryWithBialgebraAction,
         structure_record.Colift :=
           function( epi, source )
             
-            
+            return List( ActionEndomorphisms( source ),
+                         d -> ColiftAlongEpimorphism( epi, PreCompose( d, epi ) ) );
             
           end;
         

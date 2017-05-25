@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "DMod",
 Subtitle := "Monoidal categories of modules over bialgebras",
 Version := Maximum( [
-                   "2017.05.24", ## Mohamed's version
+                   "2017.05.25", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.05.24", ## Florians's version
                    ] ),

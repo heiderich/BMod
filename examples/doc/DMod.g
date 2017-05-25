@@ -17,4 +17,18 @@ ZeroObject( M );
 #! <A vector space object over Q of dimension 0> with a bialgebra action
 DirectSum( M, M );
 #! <A vector space object over Q of dimension 4> with a bialgebra action
+dN := HomalgMatrix( "[ 0, 1, 0,  0, 0, 1,  0, 0, 0 ]", 3, 3, Q );
+#! <A 3 x 3 matrix over an internal ring>
+N := DMod( [ dN ], B );
+#! <A vector space object over Q of dimension 3> with a bialgebra action
+phi := HomalgMatrix( "[ 0, 0, 1,  0, 0, 0 ]", 2, 3, Q );
+#! <A 2 x 3 matrix over an internal ring>
+phi := DMod( M, phi, N );
+#! <A morphism in Category of matrices over Q>
+IsWellDefined( phi );
+#! true
+ker := KernelObject( phi );
+#! <A vector space object over Q of dimension 1>
+coker := CokernelObject( phi );
+#! <A vector space object over Q of dimension 2>
 #! @EndExample

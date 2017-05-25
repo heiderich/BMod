@@ -9,7 +9,7 @@ A := MatrixCategory( Q );
 #! Category of matrices over Q
 B := CategoryWithBialgebraAction( A, [ 1 ] );
 #! Category of matrices over Q with bialgebra action
-dM := HomalgMatrix( "[ 0, 1, 0, 0 ]", 2, 2, Q );
+dM := HomalgMatrix( "[ 0, 1,  0, 0 ]", 2, 2, Q );
 #! <A 2 x 2 matrix over an internal ring>
 M := DMod( [ dM ], B );
 #! <A vector space object over Q of dimension 2> with a bialgebra action

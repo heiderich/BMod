@@ -104,12 +104,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_BIALGEBRA_ACTION,
         
         action_endomorphisms := ActionEndomorphisms( object );
         
+        # check whether the action "endomorphisms" are actually endomorphisms
         if not ForAll( action_endomorphisms, d -> IsEndomorphism( d ) ) then
             return false;
         fi;
         
         M := Source( action_endomorphisms[1] );
         
+        # check whether all action endomorphisms are defined on the same object
         return ForAll( action_endomorphisms{[ 2 .. Length( action_endomorphisms ) ]},
                        d -> IsEqualForObjects( Source( d ), M ) );
         
@@ -125,6 +127,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_BIALGEBRA_ACTION,
         
         mor := UnderlyingCell( morphism );
         
+        # a morphism in the category of modules with bialgebra actions is well defined
+        # if the morphism is well defined in the underlying category of modules and
+        # is compatible with the bialgebra actions (i.e. with each pair of the action endomorphisms)
         return IsWellDefinedForMorphisms( mor ) and
                ForAll( [ 1 .. Length( action_S ) ],
                        i -> PreCompose( action_S[i], mor ) = PreCompose( mor, action_T[i] ) );
@@ -139,6 +144,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_BIALGEBRA_ACTION,
         action_1 := ActionEndomorphisms( object_with_bialgebra_action_1 );
         action_2 := ActionEndomorphisms( object_with_bialgebra_action_2 );
         
+        # objects in the category of modules with bialgebra action are equal
+        # iff the underlying objects in the category of modules are equal
+        # and all the action endomorphisms are equal
         return IsEqualForObjects(
                        UnderlyingCell( object_with_bialgebra_action_1 ),
                        UnderlyingCell( object_with_bialgebra_action_2 ) ) and
@@ -151,6 +159,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_BIALGEBRA_ACTION,
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
         
+        # morphisms in the category of modules with bialgebra action are equal
+        # iff the morphisms are equal in the underlying category of modules
         return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
     end );
@@ -257,12 +267,17 @@ InstallMethod( CategoryWithBialgebraAction,
           function( obj_list, underlying_direct_sum )
             local n, m;
             
+            # number of summands
             n := Length( obj_list );
             
+            # get the action endomorphisms of each summand
             obj_list := List( obj_list, ActionEndomorphisms );
             
+            # number of action endomorphisms for the first summand
             m := Length( obj_list[1] );
             
+            # return a list of endomorphisms of length m, the i-th of them constructed
+            # as the direct sum of the i-th endomorphisms of the summands
             return List( [ 1 .. m ],
                          i -> DirectSumFunctorialWithGivenDirectSums( underlying_direct_sum, List( [ 1 .. n ], j -> obj_list[j][i] ), underlying_direct_sum ) );
             
@@ -310,25 +325,29 @@ InstallMethod( CategoryWithBialgebraAction,
     
     EnhancementWithAttributes( structure_record );
     
-    ##
+    ## constructor for objects in the category of modules with bialgebra action
     InstallMethod( DMod,
                    [ IsList,
                      IsCapCategory and CategoryFilter( category_with_bialgebra_action ) ],
                    
+      ## action_endomorphisms is a list of matrices that describe the action of generators of the bialgebra on this object
       function( action_endomorphisms, attribute_category )
         local o;
         
+        # get the first endomorphism (actually a HomalgMatrix)
         o := action_endomorphisms[1];
         
+        # make a vector spaces of the corresponding dimension
         o := VectorSpaceObject( NrRows( o ), HomalgRing( o ) );
         
+        # convert matrices in vector space endomorphisms
         action_endomorphisms := List( action_endomorphisms, d -> VectorSpaceMorphism( o, d, o ) );
         
         return structure_record.ObjectConstructor( o, action_endomorphisms );
         
     end );
     
-    ##
+    ## constructor for morphisms in the category of modules with bialgebra action (based on IsCapCategoryMorphisms)
     InstallMethod( DMod,
                    [ IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ),
                      IsCapCategoryMorphism and MorphismFilter( abelian_category ),
@@ -336,7 +355,7 @@ InstallMethod( CategoryWithBialgebraAction,
                    
       structure_record.MorphismConstructor );
     
-    ##
+    ## constructor for morphisms in the category of modules with bialgebra action (based on IsHomalgMatrix)
     InstallMethod( DMod,
                    [ IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ),
                      IsHomalgMatrix,

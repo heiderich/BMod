@@ -1,5 +1,5 @@
 #
-# DMod: Monoidal categories of modules over bialgebras
+# BMod: Monoidal categories of modules over bialgebras
 #
 # Declarations
 #
@@ -95,7 +95,7 @@ DeclareOperation( "CategoryWithBialgebraAction",
 #!  We refer to such a module as D-module.
 #! @Arguments L, B
 #! @Returns a &CAP; object
-DeclareOperation( "DMod",
+DeclareOperation( "BMod",
         [ IsList, IsCapCategory ] );
 
 #! @Description
@@ -103,51 +103,51 @@ DeclareOperation( "DMod",
 #!  given by the $k$-linear map <A>phi</A> between the underlying
 #!  finite dimensional $k$-vector spaces.
 #! @Arguments S, phi, T
-#! @Group DMod_morphism
+#! @Group BMod_morphism
 #! @Returns a &CAP; morphism
-DeclareOperation( "DMod",
+DeclareOperation( "BMod",
         [ IsCapCategoryObjectWithBialgebraAction, IsCapCategoryMorphism, IsCapCategoryObjectWithBialgebraAction ] );
 
 #! @Arguments S, mat, T
-#! @Group DMod_morphism
+#! @Group BMod_morphism
 #! @Returns a &CAP; morphism
-DeclareOperation( "DMod",
+DeclareOperation( "BMod",
         [ IsCapCategoryObjectWithBialgebraAction, IsHomalgMatrix, IsCapCategoryObjectWithBialgebraAction ] );
 
 #! @Description
 #!  Wrap the &CAP; functor <A>F</A>:<C>UnderlyingCategory</C>(<A>A</A>)<M>\to</M><C>UnderlyingCategory</C>(<A>B</A>),
 #!  where <A>A</A> and <A>B</A> are categories with bialgbra actions.
 #! @Arguments F, name, A, B
-#! @Group DMod_functor
+#! @Group BMod_functor
 #! @Returns a &CAP; functor
-DeclareOperation( "DMod",
+DeclareOperation( "BMod",
         [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
 
 #! @Arguments F, A, B
-#! @Group DMod_functor
-DeclareOperation( "DMod",
+#! @Group BMod_functor
+DeclareOperation( "BMod",
         [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
 
 #! @Arguments F, name, A
-#! @Group DMod_functor
-DeclareOperation( "DMod",
+#! @Group BMod_functor
+DeclareOperation( "BMod",
         [ IsCapFunctor, IsString, IsCapCategory ] );
 
 #! @Arguments F, A
-#! @Group DMod_functor
-DeclareOperation( "DMod",
+#! @Group BMod_functor
+DeclareOperation( "BMod",
         [ IsCapFunctor, IsCapCategory ] );
 
 #! @Description
 #!  Wrap the &CAP; natural transformation <A>eta</A>:<A>F</A><C>!.UnderlyingFunctor</C><M>\to</M><A>G</A><C>!.UnderlyingFunctor</C>,
 #!  where <A>F</A> and <A>G</A> are functors between categories with bialgbra actions.
 #! @Arguments eta, name, F, G
-#! @Group DMod_nattr
+#! @Group BMod_nattr
 #! @Returns a &CAP; natural transformation
-DeclareOperation( "DMod",
+DeclareOperation( "BMod",
         [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ] );
 
 #! @Arguments eta, F, G
-#! @Group DMod_nattr
-DeclareOperation( "DMod",
+#! @Group BMod_nattr
+DeclareOperation( "BMod",
         [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );

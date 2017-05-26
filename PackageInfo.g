@@ -1,5 +1,5 @@
 #
-# DMod: Differential modules
+# BMod: Differential modules
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,7 +8,7 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "DMod",
+PackageName := "BMod",
 Subtitle := "Monoidal categories of modules over bialgebras",
 Version := Maximum( [
                    "2017.05.25", ## Mohamed's version
@@ -56,7 +56,7 @@ SourceRepository := rec(
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
-PackageWWWHome  := "https://homalg-project.github.io/DMod/",
+PackageWWWHome  := "https://homalg-project.github.io/BMod/",
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
@@ -78,7 +78,7 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "DMod",
+  BookName  := "BMod",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

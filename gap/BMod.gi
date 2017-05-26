@@ -1,5 +1,5 @@
 #
-# DMod: Monoidal categories of modules over bialgebras
+# BMod: Monoidal categories of modules over bialgebras
 #
 # Implementations
 #
@@ -326,7 +326,7 @@ InstallMethod( CategoryWithBialgebraAction,
     EnhancementWithAttributes( structure_record );
     
     ## constructor for objects in the category of modules with bialgebra action
-    InstallMethod( DMod,
+    InstallMethod( BMod,
                    [ IsList,
                      IsCapCategory and CategoryFilter( category_with_bialgebra_action ) ],
                    
@@ -348,7 +348,7 @@ InstallMethod( CategoryWithBialgebraAction,
     end );
     
     ## constructor for morphisms in the category of modules with bialgebra action (based on IsCapCategoryMorphisms)
-    InstallMethod( DMod,
+    InstallMethod( BMod,
                    [ IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ),
                      IsCapCategoryMorphism and MorphismFilter( abelian_category ),
                      IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ) ],
@@ -356,7 +356,7 @@ InstallMethod( CategoryWithBialgebraAction,
       structure_record.MorphismConstructor );
     
     ## constructor for morphisms in the category of modules with bialgebra action (based on IsHomalgMatrix)
-    InstallMethod( DMod,
+    InstallMethod( BMod,
                    [ IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ),
                      IsHomalgMatrix,
                      IsCapCategoryObjectWithBialgebraAction and ObjectFilter( category_with_bialgebra_action ) ],
@@ -388,7 +388,7 @@ InstallMethod( CategoryWithBialgebraAction,
 end );
 
 ##
-InstallMethod( DMod,
+InstallMethod( BMod,
         [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ],
         
   function( F, name, A, B )
@@ -419,7 +419,7 @@ InstallMethod( DMod,
 end );
     
 ##
-InstallMethod( DMod,
+InstallMethod( BMod,
         [ IsCapFunctor, IsCapCategory, IsCapCategory ],
         
   function( F, A, B )
@@ -428,12 +428,12 @@ InstallMethod( DMod,
     name := "With-bialgebra-action version of ";
     name := Concatenation( name, Name( F ) );
     
-    return DMod( F, name, A, B );
+    return BMod( F, name, A, B );
     
 end );
 
 ##
-InstallMethod( DMod,
+InstallMethod( BMod,
         [ IsCapFunctor, IsString, IsCapCategory ],
         
   function( F, name, A )
@@ -442,12 +442,12 @@ InstallMethod( DMod,
         Error( "the functor is not an endofunctor\n" );
     fi;
     
-    return DMod( F, name, A, A );
+    return BMod( F, name, A, A );
     
 end );
 
 ##
-InstallMethod( DMod,
+InstallMethod( BMod,
         [ IsCapFunctor, IsCapCategory ],
         
   function( F, A )
@@ -456,12 +456,12 @@ InstallMethod( DMod,
     name := "With-ambient-object version of ";
     name := Concatenation( name, Name( F ) );
     
-    return DMod( F, name, A );
+    return BMod( F, name, A );
     
 end );
 
 ##
-InstallMethod( DMod,
+InstallMethod( BMod,
         [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ],
         
   function( eta, name, F, G )
@@ -479,7 +479,7 @@ InstallMethod( DMod,
             wbaeta,
             function( source, obj, range )
               
-              return DMod( source, ApplyNaturalTransformation( eta, UnderlyingCell( obj ) ), range );
+              return BMod( source, ApplyNaturalTransformation( eta, UnderlyingCell( obj ) ), range );
               
             end );
     
@@ -492,7 +492,7 @@ InstallMethod( DMod,
 end );
 
 ##
-InstallMethod( DMod,
+InstallMethod( BMod,
         [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ],
         
   function( eta, F, G )
@@ -501,7 +501,7 @@ InstallMethod( DMod,
     name := "With-ambient-object version of ";
     name := Concatenation( name, Name( eta ) );
     
-    return DMod( eta, name, F, G );
+    return BMod( eta, name, F, G );
     
 end );
 

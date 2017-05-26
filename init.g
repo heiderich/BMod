@@ -1,7 +1,7 @@
 #
-# DMod: Differential modules
+# BMod: Differential modules
 #
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "DMod", "gap/DMod.gd");
+ReadPackage( "BMod", "gap/BMod.gd");

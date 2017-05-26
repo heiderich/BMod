@@ -1,3 +1,3 @@
-The GAP 4 package `DMod'
+The GAP 4 package `BMod'
 ==============================
 

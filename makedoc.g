@@ -1,5 +1,5 @@
 #
-# DMod: Differential modules
+# BMod: Differential modules
 #
 # This file is a script which compiles the package manual.
 #
@@ -19,7 +19,7 @@ AutoDoc(
 
             maketest := rec( folder := ".",
                              commands :=
-                             [ "LoadPackage( \"DMod\" );",
+                             [ "LoadPackage( \"BMod\" );",
                                "LoadPackage( \"GaussForHomalg\" );",
                              ],
                            ),

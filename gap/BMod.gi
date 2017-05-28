@@ -179,7 +179,8 @@ end );
 InstallMethod( CategoryWithBialgebraAction,
         "for a CAP category and a list",
         [ IsCapCategory, IsList ],
-        
+
+  ## constructor for the category of modules with bialgebra action
   function( abelian_category, bialgebra )
     local category_with_bialgebra_action, number_of_generators_of_bialgebra,
           preconditions, category_weight_list, structure_record;
